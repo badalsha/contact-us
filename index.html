@@ -87,26 +87,43 @@
 <div class="container">
     <h1>Contact Us</h1>
     
-    <div class="contact-form">
-        <form action="/submit-contact" method="POST">
-            <div class="form-group">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email">Your Email</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-group">
-                <label for="message">Your Message</label>
-                <textarea id="message" name="message" required></textarea>
-            </div>
-
-            <button type="submit" class="btn">Send Message</button>
-        </form>
+   <form id="contactForm" onsubmit="sendEmail()">
+    <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
     </div>
+
+    <div class="form-group">
+        <label for="email">Your Email</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+        <label for="message">Your Message</label>
+        <textarea id="message" name="message" required></textarea>
+    </div>
+
+    <button type="submit" class="btn">Send Message</button>
+</form>
+
+<script>
+function sendEmail() {
+    // Prevent the default form submission
+    event.preventDefault();
+
+    // Get the form values
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    // Create a mailto link with the form data
+    const mailtoLink = `mailto:support@presizer.com?subject=Message from ${name}&body=Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0A${message}`;
+
+    // Open the default mail client with the mailto link
+    window.location.href = mailtoLink;
+}
+</script>
+
 
     <div class="contact-info">
         <h3>Contact Information</h3>
